@@ -2,7 +2,15 @@
 name = "src"
 version = "0.0.1"
 description = "ZMUM xAI"
-dependencies = ["scikit-learn", "numpy", "pandas", "matplotlib", "tqdm"]
+dependencies = [
+    "ipykernel",
+    "scikit-learn",
+    "scienceplots",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "tqdm",
+]
 [build-system]
 build-backend = "flit_core.buildapi"
 requires = ["flit_core >=3.2,<4"]
