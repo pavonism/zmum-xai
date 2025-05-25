@@ -4,6 +4,7 @@ version = "0.0.1"
 description = "ZMUM xAI"
 dependencies = [
     "ipykernel",
+    "jinja2",
     "scikit-learn",
     "scienceplots",
     "numpy",
