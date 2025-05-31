@@ -24,6 +24,7 @@ COLUMNS = {
 def load_dataset() -> Tuple[pd.DataFrame, pd.DataFrame]:
     # ' ?'/'?' is a missing value marker
     # We drop education because it is represented by education_num
+    # We drop fnlwgt as it is an indicator which should not be used while fitting the model
     df = pd.read_csv(
         "../data/raw/adult/adult.data",
         header=None,
@@ -31,7 +32,7 @@ def load_dataset() -> Tuple[pd.DataFrame, pd.DataFrame]:
         index_col=False,
         na_values=[" ?", "?"],
         dtype=COLUMNS,
-    ).drop(columns=["education"])
+    ).drop(columns=["education", "fnlwgt"])
 
     X, y = df.loc[:, df.columns != "target"], df["target"]
     X = impute_missing_data(X)
