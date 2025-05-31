@@ -3,6 +3,7 @@ name = "src"
 version = "0.0.1"
 description = "ZMUM xAI"
 dependencies = [
+    "alibi",
     "ipykernel",
     "jinja2",
     "scikit-learn",
