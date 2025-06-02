@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 def get_permutation_importance(model, X_test, y_test, metric='accuracy', n_repeats=30, random_state=123,
-                               top_n=None, xlim_max=None, threshold=0.001):
+                               top_n=10, xlim_max=None, threshold=0.001, plot_title="Most important features"):
     """
     Oblicza permutacyjną istotność cech i rysuje wykres typu lollipop.
 
@@ -53,7 +53,7 @@ def get_permutation_importance(model, X_test, y_test, metric='accuracy', n_repea
     features = top['Feature'][::-1]
 
     # Wykres
-    plt.figure(figsize=(10, 0.5 * len(top) + 1))
+    fig = plt.figure(figsize=(10, 0.5 * len(top) + 1))
 
     plt.errorbar(
         means,
@@ -69,8 +69,8 @@ def get_permutation_importance(model, X_test, y_test, metric='accuracy', n_repea
     )
 
     plt.yticks(ticks=y_pos, labels=features)
-    plt.xlabel("Spadek dokładności po permutacji")
-    plt.title("Najistotniejsze cechy")
+    plt.xlabel("Drop in accuracy after permutation")
+    plt.title(plot_title)
     plt.grid(axis='x', linestyle='--', alpha=0.5)
 
     if xlim_max is not None:
